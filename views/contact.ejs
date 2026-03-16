@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<section class="section">
+  <div class="container">
+    <h2 class="page-title"><%= content.title %></h2>
+    <p class="section-text centered-text"><%= content.intro %></p>
+    <div class="split-section">
+      <div class="content-box">
+        <p><strong><%= content.addressLabel %>:</strong> <%= content.address %></p>
+        <p><strong><%= content.phoneLabel %>:</strong> <%= content.phone %></p>
+        <p><strong><%= content.emailLabel %>:</strong> <%= content.email %></p>
+        <p><strong><%= content.hoursLabel %>:</strong> <%= content.hours %></p>
+      </div>
+      <div class="feature-list-box">
+        <h3 class="section-subtitle"><%= content.boxTitle %></h3>
+        <ul class="feature-list">
+          <% content.topics.forEach((topic) => { %>
+            <li><%= topic %></li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

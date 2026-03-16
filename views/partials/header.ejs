@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="floating-header">
+        <nav>
+          <h1>
+            <a class="brand" href="<%= routes.home %>">
+              <span class="brand-mark" aria-hidden="true">MV</span>
+              <span class="brand-copy">
+                <span class="brand-name"><%= siteName %></span>
+                <span class="brand-tagline"><%= locale === 'sk' ? 'AI recepcia pre ambulancie' : 'AI receptionist for clinics' %></span>
+              </span>
+            </a>
+          </h1>
+          <div class="nav-right">
+            <ul>
+              <li><a href="<%= routes.home %>"><%= nav.home %></a></li>
+              <li><a href="<%= routes.about %>"><%= nav.about %></a></li>
+              <li><a href="<%= routes.services %>"><%= nav.services %></a></li>
+              <li><a href="<%= routes.contact %>"><%= nav.contact %></a></li>
+              <li><a href="<%= routes.appointment %>" class="nav-cta"><%= nav.appointment %></a></li>
+            </ul>
+            <div class="language-switcher" aria-label="Language switcher">
+              <a href="<%= switcher.sk %>" class="<%= locale === 'sk' ? 'active' : '' %>">🇸🇰 <span><%= langSwitch.sk %></span></a>
+              <a href="<%= switcher.en %>" class="<%= locale === 'en' ? 'active' : '' %>">🇬🇧 <span><%= langSwitch.en %></span></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>

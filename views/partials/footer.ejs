@@ -1,0 +1,33 @@
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-mark" aria-hidden="true">MV</span>
+            <div>
+              <p class="footer-brand-name"><%= siteName %></p>
+              <p class="footer-brand-text"><%= locale === 'sk' ? 'AI recepcia, ktorá odbremeňuje ambulancie od telefonickej administratívy.' : 'AI receptionist that reduces phone admin work for clinics.' %></p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <p class="footer-heading"><%= locale === 'sk' ? 'Navigácia' : 'Navigation' %></p>
+          <a href="<%= routes.home %>"><%= nav.home %></a>
+          <a href="<%= routes.about %>"><%= nav.about %></a>
+          <a href="<%= routes.services %>"><%= nav.services %></a>
+          <a href="<%= routes.contact %>"><%= nav.contact %></a>
+        </div>
+        <div class="footer-links">
+          <p class="footer-heading"><%= locale === 'sk' ? 'Kontakt' : 'Contact' %></p>
+          <a href="mailto:hello@medvoiceai.sk">hello@medvoiceai.sk</a>
+          <a href="tel:+421900123456">+421 900 123 456</a>
+          <p><%= locale === 'sk' ? 'Bratislava, Slovensko' : 'Bratislava, Slovakia' %></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><%= footer %></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
