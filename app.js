@@ -28,9 +28,9 @@ const content = {
     footer: '© 2026 MedVoiceAI. Všetky práva vyhradené.',
     home: {
       title: 'MedVoiceAI',
-      eyebrow: 'AI recepcia pre ambulancie',
-      heroTitle: 'Telefonická AI recepcia, ktorá objednáva pacientov za vás.',
-      heroText: 'MedVoiceAI je inteligentný systém pre ambulancie, ktorý automaticky prijíma hovory, objednáva pacientov, znižuje administratívnu vyťaženosť personálu a upozorní pacienta, kedy je na rade.',
+      eyebrow: '',
+      heroTitle: 'AI asistent, ktorý Vám pomôže s manažmentom pacienta.',
+      heroText: 'MedVoiceAI je inteligentný systém, ktorý znižuje administratívnu vyťaženosť personálu.',
       heroButton: 'Dohodnúť ukážku',
       heroSecondaryButton: 'Pozrieť funkcie',
       trustBadges: ['24/7 dostupnosť', 'GDPR compliant', 'Menej administratívy'],
@@ -189,8 +189,8 @@ const content = {
     home: {
       title: 'MedVoiceAI',
       eyebrow: 'AI receptionist for clinics',
-      heroTitle: 'An AI phone receptionist that books patients for your clinic.',
-      heroText: 'MedVoiceAI is an intelligent system for clinics that answers calls automatically, books patients, reduces administrative workload, and notifies patients when it is their turn.',
+      heroTitle: 'An AI assistant that helps you manage the patient journey.',
+      heroText: 'MedVoiceAI is an intelligent system that reduces the administrative workload of staff.',
       heroButton: 'Book a Demo',
       heroSecondaryButton: 'Explore Features',
       trustBadges: ['24/7 availability', 'GDPR compliant', 'Less admin work'],
