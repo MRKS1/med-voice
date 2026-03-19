@@ -1,17 +1,21 @@
 {
   "name": "medicinske-zariadenie",
   "version": "1.0.0",
-  "description": "MedVoiceAI website built with Express and EJS",
-  "main": "app.js",
+  "description": "MedVoiceAI website built with React and Vite",
   "scripts": {
-    "start": "node app.js",
-    "dev": "node --watch app.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "serve -s dist -l ${PORT:-3000}"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "@vitejs/plugin-react": "^6.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "serve": "^14.2.6",
+    "vite": "^8.0.1"
   }
 }

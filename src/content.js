@@ -1,19 +1,9 @@
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-const content = {
+export const content = {
   sk: {
     locale: 'sk',
     siteName: 'MedVoiceAI',
+    brandTagline: 'AI asistent pre ambulancie',
+    footerTagline: 'AI asistent, ktorý odbremeňuje ambulancie od telefonickej administratívy.',
     nav: {
       home: 'Domov',
       about: 'O nás',
@@ -28,7 +18,6 @@ const content = {
     footer: '© 2026 MedVoiceAI. Všetky práva vyhradené.',
     home: {
       title: 'MedVoiceAI',
-      eyebrow: '',
       heroTitle: 'AI asistent, ktorý Vám pomôže s manažmentom pacienta.',
       heroText: 'MedVoiceAI je inteligentný systém, ktorý znižuje administratívnu vyťaženosť personálu.',
       heroButton: 'Dohodnúť ukážku',
@@ -68,7 +57,7 @@ const content = {
       steps: [
         {
           title: '1. Pacient zavolá',
-          text: 'AI recepcia prijme hovor okamžite, aj keď je ambulancia práve vyťažená.'
+          text: 'AI asistent prijme hovor okamžite, aj keď je ambulancia práve vyťažená.'
         },
         {
           title: '2. AI vybaví požiadavku',
@@ -84,7 +73,7 @@ const content = {
     },
     about: {
       title: 'O MedVoiceAI',
-      introTitle: 'AI recepcia navrhnutá pre ambulancie',
+      introTitle: 'AI asistent navrhnutý pre ambulancie',
       paragraphs: [
         'MedVoiceAI je hlasový AI systém, ktorý pomáha ambulanciám zvládať telefonickú komunikáciu s pacientmi bez zbytočného preťaženia recepcie alebo sestier.',
         'Naším cieľom je znížiť administratívnu vyťaženosť, zrýchliť objednávanie pacientov a priniesť ambulanciám modernejší spôsob organizácie prevádzky.',
@@ -103,7 +92,7 @@ const content = {
       intro: 'MedVoiceAI je praktický nástroj pre každodenný chod ambulancie, ktorý zlepšuje dostupnosť, komunikáciu aj organizáciu.',
       items: [
         {
-          title: 'AI telefonická recepcia',
+          title: 'AI telefonický asistent',
           text: 'Prijíma hovory automaticky a komunikuje s pacientom prirodzeným spôsobom aj počas špičky.'
         },
         {
@@ -152,7 +141,6 @@ const content = {
     appointment: {
       title: 'Požiadať o ukážku',
       success: 'Vaša žiadosť o ukážku bola úspešne odoslaná.',
-      formAction: '/appointment',
       labels: {
         name: 'Meno a priezvisko',
         email: 'Email',
@@ -174,6 +162,8 @@ const content = {
   en: {
     locale: 'en',
     siteName: 'MedVoiceAI',
+    brandTagline: 'AI assistant for clinics',
+    footerTagline: 'AI assistant that reduces phone admin work for clinics.',
     nav: {
       home: 'Home',
       about: 'About Us',
@@ -188,7 +178,6 @@ const content = {
     footer: '© 2026 MedVoiceAI. All rights reserved.',
     home: {
       title: 'MedVoiceAI',
-      eyebrow: 'AI receptionist for clinics',
       heroTitle: 'An AI assistant that helps you manage the patient journey.',
       heroText: 'MedVoiceAI is an intelligent system that reduces the administrative workload of staff.',
       heroButton: 'Book a Demo',
@@ -228,7 +217,7 @@ const content = {
       steps: [
         {
           title: '1. A patient calls',
-          text: 'The AI receptionist answers instantly, even when the clinic staff is busy.'
+          text: 'The AI assistant answers instantly, even when the clinic staff is busy.'
         },
         {
           title: '2. The AI handles the request',
@@ -244,7 +233,7 @@ const content = {
     },
     about: {
       title: 'About MedVoiceAI',
-      introTitle: 'An AI receptionist built for clinics',
+      introTitle: 'An AI assistant built for clinics',
       paragraphs: [
         'MedVoiceAI is a voice-based AI system that helps clinics manage patient phone communication without overloading front-desk staff or nurses.',
         'Our goal is to reduce administrative pressure, speed up appointment scheduling, and give clinics a more modern way to handle daily operations.',
@@ -263,7 +252,7 @@ const content = {
       intro: 'MedVoiceAI is a practical workflow tool for clinics that improves availability, communication, and day-to-day operations.',
       items: [
         {
-          title: 'AI phone receptionist',
+          title: 'AI phone assistant',
           text: 'Answers calls automatically and communicates with patients naturally, even during busy periods.'
         },
         {
@@ -312,7 +301,6 @@ const content = {
     appointment: {
       title: 'Request a Demo',
       success: 'Your demo request has been sent successfully.',
-      formAction: '/en/appointment',
       labels: {
         name: 'Full Name',
         email: 'Email',
@@ -333,83 +321,19 @@ const content = {
   }
 };
 
-function buildViewModel(locale, page, extras = {}) {
-  const localeContent = content[locale] || content.sk;
-  const isEnglish = locale === 'en';
-  const prefix = isEnglish ? '/en' : '';
-
-  const routes = {
-    home: `${prefix}/` || '/',
-    about: `${prefix}/about`,
-    services: `${prefix}/services`,
-    contact: `${prefix}/contact`,
-    appointment: `${prefix}/appointment`
-  };
-
-  return {
-    locale,
-    isEnglish,
-    siteName: localeContent.siteName,
-    page,
-    title: localeContent[page]?.title || localeContent.siteName,
-    nav: localeContent.nav,
-    footer: localeContent.footer,
-    routes,
-    switcher: {
-      sk: page === 'home' ? '/' : `/${page}`,
-      en: page === 'home' ? '/en' : `/en/${page}`
-    },
-    langSwitch: localeContent.langSwitch,
-    content: localeContent[page],
-    ...extras
-  };
-}
-
-function renderPage(page, locale = 'sk', extras = {}) {
-  return (req, res) => {
-    const template = page === 'home' ? 'index' : page;
-    res.render(template, buildViewModel(locale, page, extras));
-  };
-}
-
-app.get('/', renderPage('home', 'sk'));
-app.get('/about', renderPage('about', 'sk'));
-app.get('/services', renderPage('services', 'sk'));
-app.get('/contact', renderPage('contact', 'sk'));
-app.get('/appointment', renderPage('appointment', 'sk', { message: null }));
-
-app.get('/en', renderPage('home', 'en'));
-app.get('/en/about', renderPage('about', 'en'));
-app.get('/en/services', renderPage('services', 'en'));
-app.get('/en/contact', renderPage('contact', 'en'));
-app.get('/en/appointment', renderPage('appointment', 'en', { message: null }));
-
-function handleAppointment(locale) {
-  return (req, res) => {
-    const { name, email, phone, date, message: formMessage } = req.body;
-
-    console.log(`Nová objednávka (${locale}):`);
-    console.log({
-      name,
-      email,
-      phone,
-      date,
-      message: formMessage
-    });
-
-    res.render('appointment', buildViewModel(locale, 'appointment', {
-      message: content[locale].appointment.success
-    }));
-  };
-}
-
-app.post('/appointment', handleAppointment('sk'));
-app.post('/en/appointment', handleAppointment('en'));
-
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server beží na adrese http://localhost:${PORT}`);
-});
+export const routePaths = {
+  sk: {
+    home: '/',
+    about: '/about',
+    services: '/services',
+    contact: '/contact',
+    appointment: '/appointment'
+  },
+  en: {
+    home: '/en',
+    about: '/en/about',
+    services: '/en/services',
+    contact: '/en/contact',
+    appointment: '/en/appointment'
+  }
+};
