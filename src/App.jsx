@@ -280,9 +280,11 @@ function ContactPage({ pageContent }) {
 }
 
 function AppointmentPage({ pageContent, locale }) {
-  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xbdzweyk';
   const hasFormspreeEndpoint = Boolean(
-    formspreeEndpoint && !formspreeEndpoint.includes('your-form-id')
+    formspreeEndpoint &&
+    !formspreeEndpoint.includes('your-form-id') &&
+    !formspreeEndpoint.includes('vas-form-id')
   );
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
