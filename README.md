@@ -1,6 +1,6 @@
 # MedVoiceAI
 
-Jednoducha `Node.js + Express + EJS` prezentacna stranka pre MedVoiceAI.
+Jednoducha `React + Vite` prezentacna stranka pre MedVoiceAI.
 
 ## Lokalny start
 
@@ -13,6 +13,27 @@ Potom otvor:
 
 ```text
 http://localhost:3000
+```
+
+## Formspree email odosielanie
+
+1. Vytvor formular vo `https://formspree.io`
+2. Ziskaj svoj endpoint vo formate:
+
+```text
+https://formspree.io/f/xxxxx
+```
+
+3. Vytvor lokalny subor `.env` a vloz:
+
+```bash
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxx
+```
+
+Pre Render nastav rovnaku premennu v dashboarde:
+
+```text
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxx
 ```
 
 ## Deploy na Render
@@ -47,7 +68,7 @@ git push -u origin main
 
 ```text
 Environment: Node
-Build Command: npm install
+Build Command: npm install && npm run build
 Start Command: npm start
 ```
 
@@ -67,15 +88,5 @@ https://medvoiceai.onrender.com
 
 ## Dolezite poznamky
 
-- Aplikacia uz pouziva `process.env.PORT || 3000`, takze je pripravena na hosting.
-- Pre kontrolu bezi aj health endpoint:
-
-```text
-/health
-```
-
-Priklad:
-
-```text
-https://tvoja-adresa.onrender.com/health
-```
+- Po zmene `.env` alebo Render environment variables treba spravit novy deploy.
+- `serve -s dist` zabezpeci aj SPA fallback pre priame URL adresy.

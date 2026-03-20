@@ -630,6 +630,13 @@ form button {
   font-weight: bold;
 }
 
+form button:disabled,
+form input:disabled,
+form textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .success-message {
   background: rgba(185, 242, 124, 0.28);
   color: #31522a;
@@ -639,6 +646,17 @@ form button {
   margin: 20px auto;
   text-align: center;
   border: 1px solid rgba(185, 242, 124, 0.34);
+}
+
+.error-message {
+  background: rgba(255, 132, 132, 0.18);
+  color: #7f1d1d;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+  border: 1px solid rgba(255, 132, 132, 0.28);
 }
 
 @keyframes rise-in {

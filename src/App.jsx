@@ -280,7 +280,13 @@ function ContactPage({ pageContent }) {
 }
 
 function AppointmentPage({ pageContent, locale }) {
+  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+  const hasFormspreeEndpoint = Boolean(
+    formspreeEndpoint && !formspreeEndpoint.includes('your-form-id')
+  );
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -291,6 +297,7 @@ function AppointmentPage({ pageContent, locale }) {
 
   useEffect(() => {
     setSubmitted(false);
+    setSubmitError('');
   }, [locale]);
 
   function handleChange(event) {
@@ -301,16 +308,49 @@ function AppointmentPage({ pageContent, locale }) {
     }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      date: '',
-      message: ''
-    });
+    setSubmitted(false);
+    setSubmitError('');
+
+    if (!hasFormspreeEndpoint) {
+      setSubmitError(pageContent.missingEndpoint);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          locale,
+          source: 'MedVoiceAI demo form'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Formspree request failed');
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        message: ''
+      });
+    } catch (error) {
+      setSubmitError(pageContent.error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -323,24 +363,34 @@ function AppointmentPage({ pageContent, locale }) {
           <div className="success-message">{pageContent.success}</div>
         ) : null}
 
+        {submitError ? (
+          <div className="error-message">{submitError}</div>
+        ) : null}
+
+        {!hasFormspreeEndpoint ? (
+          <div className="error-message">{pageContent.setupHint}</div>
+        ) : null}
+
         <div className="split-section appointment-layout">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">{pageContent.labels.name}</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required disabled={isSubmitting} />
 
             <label htmlFor="email">{pageContent.labels.email}</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required disabled={isSubmitting} />
 
             <label htmlFor="phone">{pageContent.labels.phone}</label>
-            <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
+            <input type="text" id="phone" name="phone" value={formData.phone} onChange={handleChange} required disabled={isSubmitting} />
 
             <label htmlFor="date">{pageContent.labels.date}</label>
-            <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required />
+            <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required disabled={isSubmitting} />
 
             <label htmlFor="message">{pageContent.labels.message}</label>
-            <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} />
+            <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} disabled={isSubmitting} />
 
-            <button type="submit">{pageContent.submit}</button>
+            <button type="submit" disabled={isSubmitting || !hasFormspreeEndpoint}>
+              {isSubmitting ? pageContent.sending : pageContent.submit}
+            </button>
           </form>
 
           <div className="feature-list-box">
