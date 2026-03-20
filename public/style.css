@@ -1008,12 +1008,16 @@ form textarea:disabled {
   }
 
   nav {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
     gap: 12px;
   }
 
   nav h1 {
     flex: 1 1 auto;
     width: auto;
+    min-width: 0;
     display: block;
   }
 
@@ -1033,18 +1037,28 @@ form textarea:disabled {
   .menu-toggle {
     display: inline-flex;
     flex: 0 0 auto;
+    margin-left: auto;
   }
 
   .nav-right {
     display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
     width: 100%;
-    flex: 1 1 100%;
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    padding-top: 14px;
-    margin-top: 2px;
-    border-top: 1px solid rgba(58, 126, 156, 0.12);
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(250, 254, 255, 0.98), rgba(234, 245, 251, 0.98));
+    border: 1px solid rgba(125, 180, 206, 0.22);
+    border-radius: 22px;
+    box-shadow:
+      0 26px 60px rgba(41, 95, 124, 0.18),
+      0 8px 24px rgba(41, 95, 124, 0.1);
+    backdrop-filter: blur(20px);
+    z-index: 20;
   }
 
   .nav-right.is-open {
@@ -1069,7 +1083,7 @@ form textarea:disabled {
     justify-content: center;
     padding: 12px 14px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(58, 126, 156, 0.12);
   }
 
@@ -1096,6 +1110,12 @@ form textarea:disabled {
     border-radius: 20px;
   }
 
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
   .brand-name {
     font-size: 20px;
   }
@@ -1107,6 +1127,11 @@ form textarea:disabled {
   .language-switcher {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .nav-right {
+    padding: 12px;
+    border-radius: 20px;
   }
 
   .hero {
