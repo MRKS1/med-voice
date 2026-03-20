@@ -69,25 +69,18 @@ function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavig
               </AppLink>
             </h1>
 
-            <div className="nav-controls">
-              <div className="language-switcher" aria-label="Language switcher">
-                <AppLink href={switcher.sk} className={locale === 'sk' ? 'active' : ''} onNavigate={handleNavigate}>🇸🇰 <span>SK</span></AppLink>
-                <AppLink href={switcher.en} className={locale === 'en' ? 'active' : ''} onNavigate={handleNavigate}>🇬🇧 <span>EN</span></AppLink>
-              </div>
-
-              <button
-                type="button"
-                className={`menu-toggle ${isMenuOpen ? 'is-open' : ''}`}
-                aria-expanded={isMenuOpen}
-                aria-controls="site-navigation"
-                aria-label={isMenuOpen ? closeLabel : menuLabel}
-                onClick={() => setIsMenuOpen((current) => !current)}
-              >
-                <span />
-                <span />
-                <span />
-              </button>
-            </div>
+            <button
+              type="button"
+              className={`menu-toggle ${isMenuOpen ? 'is-open' : ''}`}
+              aria-expanded={isMenuOpen}
+              aria-controls="site-navigation"
+              aria-label={isMenuOpen ? closeLabel : menuLabel}
+              onClick={() => setIsMenuOpen((current) => !current)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
 
             <div className={`nav-right ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation">
               <ul>
@@ -97,6 +90,10 @@ function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavig
                 <li><AppLink href={routes.contact} onNavigate={handleNavigate}>{nav.contact}</AppLink></li>
                 <li><AppLink href={routes.appointment} className="nav-cta" onNavigate={handleNavigate}>{nav.appointment}</AppLink></li>
               </ul>
+              <div className="language-switcher" aria-label="Language switcher">
+                <AppLink href={switcher.sk} className={locale === 'sk' ? 'active' : ''} onNavigate={handleNavigate}>🇸🇰 <span>SK</span></AppLink>
+                <AppLink href={switcher.en} className={locale === 'en' ? 'active' : ''} onNavigate={handleNavigate}>🇬🇧 <span>EN</span></AppLink>
+              </div>
             </div>
           </nav>
         </div>
