@@ -138,6 +138,13 @@ nav h1 {
   gap: 18px;
 }
 
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -847,6 +854,11 @@ form textarea:disabled {
     justify-content: center;
   }
 
+  .nav-controls {
+    width: 100%;
+    justify-content: center;
+  }
+
   .brand {
     width: 100%;
     justify-content: center;
@@ -888,11 +900,6 @@ form textarea:disabled {
   .language-switcher a {
     font-size: 14px;
     padding: 9px 12px;
-  }
-
-  .language-switcher {
-    width: 100%;
-    justify-content: center;
   }
 
   .hero {
@@ -1002,7 +1009,7 @@ form textarea:disabled {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   header {
     padding-top: 12px;
   }
@@ -1040,15 +1047,24 @@ form textarea:disabled {
     flex: 0 0 auto;
   }
 
+  .nav-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
   .nav-right {
     display: none;
     width: 100%;
     flex: 1 1 100%;
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    padding-top: 14px;
-    margin-top: 2px;
+    gap: 10px;
+    padding-top: 12px;
+    margin-top: 10px;
     border-top: 1px solid rgba(58, 126, 156, 0.12);
   }
 
@@ -1078,16 +1094,17 @@ form textarea:disabled {
     border: 1px solid rgba(58, 126, 156, 0.12);
   }
 
-  .language-switcher {
-    width: 100%;
-    justify-content: stretch;
-    gap: 8px;
+  .language-switcher a {
+    min-width: 40px;
+    justify-content: center;
+    padding: 7px 8px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 12px;
   }
 
-  .language-switcher a {
-    flex: 1 1 0;
-    justify-content: center;
-    padding: 11px 12px;
+  .language-switcher a span {
+    display: none;
   }
 }
 
@@ -1109,9 +1126,23 @@ form textarea:disabled {
     display: none;
   }
 
+  .nav-controls {
+    gap: 6px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+  }
+
   .language-switcher {
-    flex-direction: column;
-    align-items: stretch;
+    gap: 6px;
+  }
+
+  .language-switcher a {
+    min-width: 36px;
+    padding: 6px 7px;
   }
 
   .hero {
