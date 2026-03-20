@@ -694,10 +694,7 @@ form textarea:disabled {
 
   .hero-grid,
   .split-section,
-  .footer-grid,
-  nav,
-  .nav-right,
-  nav ul {
+  .footer-grid {
     flex-direction: column;
   }
 
@@ -707,10 +704,43 @@ form textarea:disabled {
     display: flex;
   }
 
+  nav {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  nav h1 {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 24px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-name {
+    font-size: 24px;
+  }
+
+  .brand-tagline {
+    font-size: 10px;
+  }
+
+  .nav-right {
+    flex: 1 1 420px;
+    justify-content: flex-end;
+    gap: 12px;
+    min-width: 0;
+  }
+
   nav ul {
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
-    gap: 12px;
+    gap: 10px 12px;
+    min-width: 0;
   }
 
   .hero {
@@ -742,7 +772,7 @@ form textarea:disabled {
   }
 
   .floating-header {
-    padding: 18px;
+    padding: 14px 18px;
     border-radius: 24px;
   }
 
@@ -774,6 +804,12 @@ form textarea:disabled {
     gap: 16px;
   }
 
+  nav h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .brand {
     width: 100%;
     justify-content: center;
@@ -798,12 +834,15 @@ form textarea:disabled {
 
   .nav-right {
     width: 100%;
+    flex: 1 1 auto;
+    flex-direction: column;
     gap: 14px;
   }
 
   nav ul {
     width: 100%;
     justify-content: center;
+    text-align: center;
     gap: 10px 12px;
   }
 
