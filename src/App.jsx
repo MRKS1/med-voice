@@ -41,13 +41,26 @@ function AppLink({ href, className, children, onNavigate }) {
 }
 
 function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavigate }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuLabel = locale === 'sk' ? 'Menu' : 'Menu';
+  const closeLabel = locale === 'sk' ? 'Zavrieť menu' : 'Close menu';
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [locale, routes.home, routes.about, routes.services, routes.contact, routes.appointment]);
+
+  function handleNavigate(href) {
+    setIsMenuOpen(false);
+    onNavigate(href);
+  }
+
   return (
     <header>
       <div className="container">
         <div className="floating-header">
           <nav>
             <h1>
-              <AppLink className="brand" href={routes.home} onNavigate={onNavigate}>
+              <AppLink className="brand" href={routes.home} onNavigate={handleNavigate}>
                 <span className="brand-mark" aria-hidden="true">MV</span>
                 <span className="brand-copy">
                   <span className="brand-name">{siteName}</span>
@@ -55,17 +68,31 @@ function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavig
                 </span>
               </AppLink>
             </h1>
-            <div className="nav-right">
+
+            <button
+              type="button"
+              className={`menu-toggle ${isMenuOpen ? 'is-open' : ''}`}
+              aria-expanded={isMenuOpen}
+              aria-controls="site-navigation"
+              aria-label={isMenuOpen ? closeLabel : menuLabel}
+              onClick={() => setIsMenuOpen((current) => !current)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+
+            <div className={`nav-right ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation">
               <ul>
-                <li><AppLink href={routes.home} onNavigate={onNavigate}>{nav.home}</AppLink></li>
-                <li><AppLink href={routes.about} onNavigate={onNavigate}>{nav.about}</AppLink></li>
-                <li><AppLink href={routes.services} onNavigate={onNavigate}>{nav.services}</AppLink></li>
-                <li><AppLink href={routes.contact} onNavigate={onNavigate}>{nav.contact}</AppLink></li>
-                <li><AppLink href={routes.appointment} className="nav-cta" onNavigate={onNavigate}>{nav.appointment}</AppLink></li>
+                <li><AppLink href={routes.home} onNavigate={handleNavigate}>{nav.home}</AppLink></li>
+                <li><AppLink href={routes.about} onNavigate={handleNavigate}>{nav.about}</AppLink></li>
+                <li><AppLink href={routes.services} onNavigate={handleNavigate}>{nav.services}</AppLink></li>
+                <li><AppLink href={routes.contact} onNavigate={handleNavigate}>{nav.contact}</AppLink></li>
+                <li><AppLink href={routes.appointment} className="nav-cta" onNavigate={handleNavigate}>{nav.appointment}</AppLink></li>
               </ul>
               <div className="language-switcher" aria-label="Language switcher">
-                <AppLink href={switcher.sk} className={locale === 'sk' ? 'active' : ''} onNavigate={onNavigate}>🇸🇰 <span>SK</span></AppLink>
-                <AppLink href={switcher.en} className={locale === 'en' ? 'active' : ''} onNavigate={onNavigate}>🇬🇧 <span>EN</span></AppLink>
+                <AppLink href={switcher.sk} className={locale === 'sk' ? 'active' : ''} onNavigate={handleNavigate}>🇸🇰 <span>SK</span></AppLink>
+                <AppLink href={switcher.en} className={locale === 'en' ? 'active' : ''} onNavigate={handleNavigate}>🇬🇧 <span>EN</span></AppLink>
               </div>
             </div>
           </nav>
