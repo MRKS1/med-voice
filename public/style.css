@@ -96,8 +96,18 @@ nav h1 {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   color: var(--heading);
   text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  height: 52px;
+  max-width: min(100%, 250px);
+  transform: translateY(3px);
+  filter: drop-shadow(0 10px 22px rgba(65, 109, 180, 0.18));
 }
 
 .brand-mark {
@@ -566,8 +576,15 @@ footer {
 
 .footer-logo {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
+}
+
+.brand-logo-footer {
+  height: 48px;
+  max-width: min(100%, 230px);
+  margin-bottom: 12px;
+  transform: translateY(3px);
 }
 
 .footer-brand-name {
@@ -757,6 +774,11 @@ form textarea:disabled {
     gap: 10px;
   }
 
+  .brand-logo {
+    height: 48px;
+    max-width: min(100%, 220px);
+  }
+
   .brand-name {
     font-size: 24px;
   }
@@ -851,6 +873,11 @@ form textarea:disabled {
     width: 100%;
     justify-content: center;
     gap: 10px;
+  }
+
+  .brand-logo {
+    height: 42px;
+    max-width: min(100%, 210px);
   }
 
   .brand-mark {
@@ -980,6 +1007,11 @@ form textarea:disabled {
     align-items: center;
   }
 
+  .brand-logo-footer {
+    height: 44px;
+    margin-bottom: 10px;
+  }
+
   form input,
   form textarea {
     padding: 14px 12px;
@@ -1024,6 +1056,11 @@ form textarea:disabled {
   .brand {
     width: auto;
     justify-content: flex-start;
+  }
+
+  .brand-logo {
+    height: 40px;
+    max-width: min(100%, 190px);
   }
 
   .brand-name {
@@ -1118,6 +1155,11 @@ form textarea:disabled {
 
   .brand-name {
     font-size: 20px;
+  }
+
+  .brand-logo {
+    height: 36px;
+    max-width: min(100%, 170px);
   }
 
   .brand-tagline {

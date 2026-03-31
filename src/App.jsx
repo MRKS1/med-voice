@@ -40,7 +40,13 @@ function AppLink({ href, className, children, onNavigate }) {
   );
 }
 
-function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavigate }) {
+function BrandLogo({ className = '', alt = 'MedVoice logo' }) {
+  const classes = ['brand-logo', className].filter(Boolean).join(' ');
+
+  return <img className={classes} src="/medvoice-logo.png" alt={alt} />;
+}
+
+function Header({ locale, nav, routes, switcher, onNavigate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuLabel = locale === 'sk' ? 'Menu' : 'Menu';
   const closeLabel = locale === 'sk' ? 'Zavrieť menu' : 'Close menu';
@@ -61,11 +67,7 @@ function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavig
           <nav>
             <h1>
               <AppLink className="brand" href={routes.home} onNavigate={handleNavigate}>
-                <span className="brand-mark" aria-hidden="true">MV</span>
-                <span className="brand-copy">
-                  <span className="brand-name">{siteName}</span>
-                  <span className="brand-tagline">{brandTagline}</span>
-                </span>
+                <BrandLogo />
               </AppLink>
             </h1>
 
@@ -102,16 +104,15 @@ function Header({ locale, nav, routes, switcher, siteName, brandTagline, onNavig
   );
 }
 
-function Footer({ footer, footerTagline, locale, nav, routes, siteName, onNavigate }) {
+function Footer({ footer, footerTagline, locale, nav, routes, onNavigate }) {
   return (
     <footer>
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-logo">
-              <span className="brand-mark" aria-hidden="true">MV</span>
               <div>
-                <p className="footer-brand-name">{siteName}</p>
+                <BrandLogo className="brand-logo-footer" />
                 <p className="footer-brand-text">{footerTagline}</p>
               </div>
             </div>
@@ -521,8 +522,6 @@ export default function App() {
         nav={localeContent.nav}
         routes={routes}
         switcher={switcher}
-        siteName={localeContent.siteName}
-        brandTagline={localeContent.brandTagline}
         onNavigate={navigate}
       />
       {renderPage()}
@@ -532,7 +531,6 @@ export default function App() {
         locale={routeState.locale}
         nav={localeContent.nav}
         routes={routes}
-        siteName={localeContent.siteName}
         onNavigate={navigate}
       />
     </>
