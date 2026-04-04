@@ -5,6 +5,34 @@
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
+/* ── Skip link ── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--heading, #102a3d);
+  color: #ffffff;
+  border-radius: 0 0 12px 12px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Focus styles ── */
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong, #21b8d6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 :root {
   --bg: #dcecf6;
   --bg-soft: #edf6fb;
@@ -266,19 +294,6 @@ nav a:hover {
   text-align: center;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 14px;
-  background: rgba(110, 231, 255, 0.08);
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
 .hero h2 {
   font-size: clamp(44px, 6vw, 78px);
   line-height: 1.05;
@@ -310,15 +325,6 @@ nav a:hover {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-}
-
-.trust-badges span {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(110, 231, 255, 0.08);
-  border: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--heading);
 }
 
 .hero-panel {
@@ -404,6 +410,11 @@ nav a:hover {
   border-bottom: 1px solid var(--line);
 }
 
+.section-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -435,18 +446,6 @@ nav a:hover {
 .content-box:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 44px rgba(18, 48, 72, 0.11);
-}
-
-.section-title {
-  font-size: 34px;
-  color: var(--heading);
-  margin-bottom: 12px;
-}
-
-.section-subtitle {
-  font-size: 24px;
-  color: var(--heading);
-  margin-bottom: 14px;
 }
 
 .section-text {
@@ -539,25 +538,138 @@ nav a:hover {
 
 .cta-box {
   background:
-    radial-gradient(circle at top right, rgba(185, 242, 124, 0.16), transparent 20%),
-    linear-gradient(135deg, #edfaff, #d8edf8);
-  color: var(--heading);
-  padding: 42px;
+    radial-gradient(circle at 20% 80%, rgba(110, 231, 255, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(185, 242, 124, 0.20), transparent 24%),
+    linear-gradient(135deg, #1a3a4f, #102a3d 60%, #0d2236);
+  color: #ffffff;
+  padding: 52px 42px;
   border-radius: 30px;
   text-align: center;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(110, 231, 255, 0.18);
+  box-shadow:
+    0 32px 72px rgba(10, 30, 48, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .cta-box h2 {
   font-size: clamp(28px, 4vw, 42px);
   margin-bottom: 14px;
+  color: #ffffff;
 }
 
 .cta-box p {
   max-width: 720px;
-  margin: 0 auto 20px;
+  margin: 0 auto 24px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+}
+
+.cta-box-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  color: #052033;
+  padding: 15px 32px;
+  font-size: 16px;
+  box-shadow: 0 16px 40px rgba(110, 231, 255, 0.28);
+}
+
+.cta-box-btn:hover {
+  box-shadow: 0 22px 48px rgba(110, 231, 255, 0.36);
+}
+
+/* ── Testimonials ── */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.testimonial-card {
+  background: linear-gradient(180deg, rgba(252, 255, 255, 0.94), rgba(236, 246, 251, 0.96));
+  padding: 28px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px rgba(18, 48, 72, 0.11);
+}
+
+.testimonial-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.testimonial-author {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.testimonial-name {
+  font-weight: bold;
+  color: var(--heading);
+  font-size: 15px;
+}
+
+.testimonial-role {
   color: var(--text-soft);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* ── Sticky CTA Bar ── */
+
+.sticky-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  background: linear-gradient(180deg, rgba(232, 244, 251, 0.96), rgba(220, 236, 246, 0.98));
+  border-top: 1px solid var(--line-strong);
+  box-shadow: 0 -8px 32px rgba(36, 86, 112, 0.12);
+  backdrop-filter: blur(16px);
+  padding: 12px 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.sticky-cta-bar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sticky-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sticky-cta-text {
+  font-weight: bold;
+  color: var(--heading);
+  font-size: 15px;
+}
+
+.sticky-cta-btn {
+  padding: 10px 22px;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 footer {
@@ -621,12 +733,6 @@ footer {
   padding-top: 18px;
   border-top: 1px solid rgba(58, 126, 156, 0.16);
   text-align: center;
-}
-
-.page-title {
-  text-align: center;
-  margin: 40px 0 20px;
-  color: var(--heading);
 }
 
 .content-box {
@@ -739,6 +845,101 @@ form textarea:disabled {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* ── Scroll reveal ── */
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Trust badge icons ── */
+
+.trust-badge-icon {
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+.trust-badges span {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(110, 231, 255, 0.10);
+  border: 1px solid var(--line-strong);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading);
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(41, 95, 124, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trust-badges span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(41, 95, 124, 0.12);
+}
+
+/* ── Eyebrow label ── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(110, 231, 255, 0.10);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin-bottom: 18px;
+}
+
+/* ── Typography scale ── */
+
+.page-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  color: var(--heading);
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+}
+
+.section-title {
+  font-size: clamp(26px, 3.5vw, 36px);
+  color: var(--heading);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: var(--heading);
+  margin-bottom: 14px;
+  line-height: 1.25;
 }
 
 @media (max-width: 900px) {
@@ -990,9 +1191,35 @@ form textarea:disabled {
   }
 
   .cards,
-  .steps-grid {
+  .steps-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .cta-box {
+    padding: 32px 22px;
+  }
+
+  .cta-box p {
+    font-size: 16px;
+  }
+
+  .sticky-cta-bar {
+    padding: 10px 0;
+  }
+
+  .sticky-cta-text {
+    display: none;
+  }
+
+  .sticky-cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .testimonial-card {
+    padding: 22px;
   }
 
   .split-section {
@@ -1078,7 +1305,6 @@ form textarea:disabled {
   }
 
   .nav-right {
-    display: none;
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -1096,10 +1322,18 @@ form textarea:disabled {
       0 8px 24px rgba(41, 95, 124, 0.1);
     backdrop-filter: blur(20px);
     z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
   }
 
   .nav-right.is-open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   nav ul {

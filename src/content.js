@@ -18,11 +18,16 @@ export const content = {
     footer: '© 2026 MedVoiceAI. Všetky práva vyhradené.',
     home: {
       title: 'MedVoiceAI',
+      heroEyebrow: 'AI asistent pre kliniky',
       heroTitle: 'AI asistent, ktorý Vám pomôže s manažmentom pacienta.',
       heroText: 'MedVoiceAI je inteligentný systém, ktorý znižuje administratívnu vyťaženosť personálu.',
       heroButton: 'Dohodnúť ukážku',
       heroSecondaryButton: 'Pozrieť funkcie',
-      trustBadges: ['24/7 dostupnosť', 'GDPR compliant', 'Menej administratívy'],
+      trustBadges: [
+        { icon: '🕐', label: '24/7 dostupnosť' },
+        { icon: '🔒', label: 'GDPR compliant' },
+        { icon: '📋', label: 'Menej administratívy' }
+      ],
       benefitsTitle: 'Čo MedVoiceAI zvládne',
       benefits: [
         {
@@ -68,8 +73,27 @@ export const content = {
           text: 'Systém vie pacienta informovať, kedy prichádza na rad alebo že sa termín blíži.'
         }
       ],
+      testimonialsTitle: 'Čo hovoria naši partneri',
+      testimonials: [
+        {
+          quote: 'Odkedy používame MedVoiceAI, naša recepcia stíha aj v špičke. Pacienti sú spokojnejší a personál menej preťažený.',
+          author: 'Praktická lekárka',
+          role: 'Ambulancia v Bratislave'
+        },
+        {
+          quote: 'Systém nám znížil počet nevybavených hovorov o viac ako 60 %. Nasadenie bolo jednoduché a rýchle.',
+          author: 'Manažér polikliniky',
+          role: 'Poliklinika v Košiciach'
+        },
+        {
+          quote: 'Oceňujem, že MedVoiceAI komunikuje profesionálne a pacienti majú pocit, že sú vždy odbavení.',
+          author: 'Vedúca sestra',
+          role: 'Ambulancia v Žiline'
+        }
+      ],
       ctaTitle: 'Chceš ukázať ambulanciám modernejší spôsob objednávania?',
-      ctaText: 'MedVoiceAI prináša rýchlejšiu komunikáciu s pacientmi, menej prerušení pre personál a profesionálnejší chod ambulancie.'
+      ctaText: 'MedVoiceAI prináša rýchlejšiu komunikáciu s pacientmi, menej prerušení pre personál a profesionálnejší chod ambulancie.',
+      stickyCtaText: 'Dohodnúť ukážku'
     },
     about: {
       title: 'O MedVoiceAI',
@@ -182,11 +206,16 @@ export const content = {
     footer: '© 2026 MedVoiceAI. All rights reserved.',
     home: {
       title: 'MedVoiceAI',
+      heroEyebrow: 'AI assistant for clinics',
       heroTitle: 'An AI assistant that helps you manage the patient journey.',
       heroText: 'MedVoiceAI is an intelligent system that reduces the administrative workload of staff.',
       heroButton: 'Book a Demo',
       heroSecondaryButton: 'Explore Features',
-      trustBadges: ['24/7 availability', 'GDPR compliant', 'Less admin work'],
+      trustBadges: [
+        { icon: '🕐', label: '24/7 availability' },
+        { icon: '🔒', label: 'GDPR compliant' },
+        { icon: '📋', label: 'Less admin work' }
+      ],
       benefitsTitle: 'What MedVoiceAI Handles',
       benefits: [
         {
@@ -232,8 +261,27 @@ export const content = {
           text: 'The system can let the patient know when their turn is coming or when the appointment is near.'
         }
       ],
+      testimonialsTitle: 'What our partners say',
+      testimonials: [
+        {
+          quote: 'Since we started using MedVoiceAI, our reception handles peak times with ease. Patients are happier and staff less overwhelmed.',
+          author: 'General Practitioner',
+          role: 'Clinic in Bratislava'
+        },
+        {
+          quote: 'The system reduced our missed calls by over 60%. Deployment was simple and fast.',
+          author: 'Polyclinic Manager',
+          role: 'Polyclinic in Košice'
+        },
+        {
+          quote: 'I appreciate that MedVoiceAI communicates professionally and patients feel like they are always attended to.',
+          author: 'Head Nurse',
+          role: 'Clinic in Žilina'
+        }
+      ],
       ctaTitle: 'Ready to present a smarter front desk for clinics?',
-      ctaText: 'MedVoiceAI brings faster patient communication, fewer interruptions for staff, and a more modern clinic workflow.'
+      ctaText: 'MedVoiceAI brings faster patient communication, fewer interruptions for staff, and a more modern clinic workflow.',
+      stickyCtaText: 'Book a Demo'
     },
     about: {
       title: 'About MedVoiceAI',
