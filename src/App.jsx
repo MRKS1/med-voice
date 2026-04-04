@@ -113,6 +113,9 @@ export default function App() {
       <Footer
         footer={localeContent.footer}
         footerTagline={localeContent.footerTagline}
+        footerNav={localeContent.footerNav}
+        footerContact={localeContent.footerContact}
+        footerAddress={localeContent.footerAddress}
         locale={routeState.locale}
         nav={localeContent.nav}
         routes={routes}

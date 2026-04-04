@@ -16,6 +16,9 @@ export const content = {
       en: 'EN'
     },
     footer: '© 2026 MedVoiceAI. Všetky práva vyhradené.',
+    footerNav: 'Navigácia',
+    footerContact: 'Kontakt',
+    footerAddress: 'Bratislava, Slovensko',
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'AI asistent pre kliniky',
@@ -204,6 +207,9 @@ export const content = {
       en: 'EN'
     },
     footer: '© 2026 MedVoiceAI. All rights reserved.',
+    footerNav: 'Navigation',
+    footerContact: 'Contact',
+    footerAddress: 'Bratislava, Slovakia',
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'AI assistant for clinics',
