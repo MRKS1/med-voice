@@ -9,7 +9,7 @@ export const content = {
       about: 'O nás',
       services: 'Služby',
       contact: 'Kontakt',
-      appointment: 'Objednanie'
+      appointment: 'Dohodnúť ukážku'
     },
     langSwitch: {
       sk: 'SK',
