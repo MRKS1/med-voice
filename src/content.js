@@ -22,7 +22,7 @@ export const content = {
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'Hlasový AI pre zdravotníctvo',
-      heroTitle: 'Vaša ambulancia dostupná 24/7 — bez ďalšieho personálu.',
+      heroTitle: 'AI asistent, ktorý Vám pomôže s manažmentom pacienta.',
       heroText: 'MedVoiceAI automaticky prijíma hovory, objednáva pacientov a odbavuje bežné otázky, aby sa váš tím mohol sústrediť na starostlivosť.',
       heroButton: 'Vyskúšajte zadarmo',
       heroSecondaryButton: 'Pozrieť funkcie',
@@ -213,7 +213,7 @@ export const content = {
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'Voice AI for Healthcare',
-      heroTitle: 'Your clinic, available 24/7 — without extra staff.',
+      heroTitle: 'An AI assistant that helps you manage the patient journey.',
       heroText: 'MedVoiceAI answers calls, books appointments, and handles routine queries automatically so your team can focus on patient care.',
       heroButton: 'Try It Free',
       heroSecondaryButton: 'Explore Features',
