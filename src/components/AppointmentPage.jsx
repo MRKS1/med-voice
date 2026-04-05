@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function AppointmentPage({ pageContent, locale }) {
-  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xbdzweyk';
+  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
   const hasFormspreeEndpoint = Boolean(
     formspreeEndpoint &&
     !formspreeEndpoint.includes('your-form-id') &&

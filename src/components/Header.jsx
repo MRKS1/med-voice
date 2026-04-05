@@ -45,7 +45,7 @@ export default function Header({ locale, nav, routes, switcher, onNavigate }) {
               <span />
             </button>
 
-            <div className={`nav-right ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation" role="menu">
+            <div className={`nav-right ${isMenuOpen ? 'is-open' : ''}`} id="site-navigation">
               <ul>
                 <li><AppLink href={routes.home} onNavigate={handleNavigate}>{nav.home}</AppLink></li>
                 <li><AppLink href={routes.about} onNavigate={handleNavigate}>{nav.about}</AppLink></li>
