@@ -21,10 +21,10 @@ export const content = {
     footerAddress: 'Bratislava, Slovensko',
     home: {
       title: 'MedVoiceAI',
-      heroEyebrow: 'AI asistent pre kliniky',
-      heroTitle: 'AI asistent, ktorý Vám pomôže s manažmentom pacienta.',
-      heroText: 'MedVoiceAI je inteligentný systém, ktorý znižuje administratívnu vyťaženosť personálu.',
-      heroButton: 'Dohodnúť ukážku',
+      heroEyebrow: 'Hlasový AI pre zdravotníctvo',
+      heroTitle: 'Vaša ambulancia dostupná 24/7 — bez ďalšieho personálu.',
+      heroText: 'MedVoiceAI automaticky prijíma hovory, objednáva pacientov a odbavuje bežné otázky, aby sa váš tím mohol sústrediť na starostlivosť.',
+      heroButton: 'Vyskúšajte zadarmo',
       heroSecondaryButton: 'Pozrieť funkcie',
       trustBadges: [
         { icon: '🕐', label: '24/7 dostupnosť' },
@@ -212,10 +212,10 @@ export const content = {
     footerAddress: 'Bratislava, Slovakia',
     home: {
       title: 'MedVoiceAI',
-      heroEyebrow: 'AI assistant for clinics',
-      heroTitle: 'An AI assistant that helps you manage the patient journey.',
-      heroText: 'MedVoiceAI is an intelligent system that reduces the administrative workload of staff.',
-      heroButton: 'Book a Demo',
+      heroEyebrow: 'Voice AI for Healthcare',
+      heroTitle: 'Your clinic, available 24/7 — without extra staff.',
+      heroText: 'MedVoiceAI answers calls, books appointments, and handles routine queries automatically so your team can focus on patient care.',
+      heroButton: 'Try It Free',
       heroSecondaryButton: 'Explore Features',
       trustBadges: [
         { icon: '🕐', label: '24/7 availability' },
