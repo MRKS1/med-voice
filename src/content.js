@@ -18,7 +18,7 @@ export const content = {
     footer: '© 2026 MedVoiceAI. Všetky práva vyhradené.',
     footerNav: 'Navigácia',
     footerContact: 'Kontakt',
-    footerAddress: 'Bratislava, Slovensko',
+    footerAddress: 'Košice, Slovensko',
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'Hlasový AI pre zdravotníctvo',
@@ -120,29 +120,40 @@ export const content = {
       items: [
         {
           title: 'AI telefonický asistent',
-          text: 'Prijíma hovory automaticky a komunikuje s pacientom prirodzeným spôsobom aj počas špičky.'
+          tag: 'AI CORE',
+          text: 'Automaticky preberá hovory a komunikuje prirodzene aj v čase najväčšej vyťaženosti.'
         },
         {
           title: 'Objednávanie pacientov',
-          text: 'Zaznamenáva požiadavky, navrhuje termíny a pomáha znižovať počet nevybavených telefonátov.'
-        },
-        {
-          title: 'Notifikácia o poradí',
-          text: 'Vie pacienta upozorniť, kedy sa jeho termín blíži alebo že je už takmer na rade.'
+          tag: 'WORKFLOW',
+          text: 'Zachytí požiadavku, ponúkne termín a výrazne znižuje počet nevybavených telefonátov.'
         },
         {
           title: 'Odľahčenie personálu',
-          text: 'Sestry a administratíva sa môžu viac venovať pacientom a menej opakovaným hovorom.'
+          tag: 'TEAM FOCUS',
+          text: 'Uvoľňuje kapacitu sestier a administratívy pre pacientov namiesto opakovaných hovorov.'
         },
         {
           title: 'GDPR-oriented procesy',
-          text: 'Systém je navrhnutý s dôrazom na ochranu osobných údajov a bezpečné fungovanie v zdravotníckom prostredí.'
-        },
-        {
-          title: 'Škálovateľnosť pre viac ambulancií',
-          text: 'Riešenie sa dá prispôsobiť menším ambulanciám aj väčším zdravotníckym prevádzkam.'
+          tag: 'SECURITY',
+          text: 'Procesy sú navrhnuté s dôrazom na ochranu údajov a bezpečnú prevádzku v zdravotníctve.'
         }
       ],
+      paidFeatures: {
+        title: 'Platené funkcie',
+        teaser: 'Chceš ukázať ambulanciám modernejší spôsob objednávania? Klikni a pozri premium možnosti.',
+        description: 'Vyber si rozšírené balíky, ktoré pomôžu ambulancii zrýchliť komunikáciu a zvýšiť komfort pacientov.',
+        features: [
+          {
+            title: 'Privolanie',
+            text: 'Automatizované privolanie pacienta podľa pripravených pravidiel a aktuálnej prevádzky.'
+          },
+          {
+            title: 'Platené konzultácie',
+            text: 'Možnosť rezervovať a spravovať platené konzultácie s prehľadným procesom pre personál aj pacientov.'
+          }
+        ]
+      },
       outroTitle: 'Výsledok pre ambulanciu',
       outroText: 'Menej zmeškaných hovorov, menej ručnej administratívy a profesionálnejší pacientsky zážitok od prvého kontaktu.'
     },
@@ -150,19 +161,19 @@ export const content = {
       title: 'Kontakt a ukážka riešenia',
       intro: 'Ak chceš zistiť, ako by MedVoiceAI fungoval v konkrétnej ambulancii, ozvi sa nám. Radi pripravíme krátku ukážku použitia aj základný návrh nasadenia.',
       addressLabel: 'Sídlo',
-      address: 'Bratislava, Slovensko',
+      address: 'Košice, Slovensko',
       phoneLabel: 'Telefonický kontakt',
-      phone: '+421 900 123 456',
+      phone: '+421 949 391 770',
       emailLabel: 'Email',
-      email: 'hello@medvoiceai.sk',
+      email: 'info@medvoice.sk',
       hoursLabel: 'Dostupnosť',
       hours: 'Po - Pia: 9:00 - 17:00',
       boxTitle: 'Čo vieme prejsť na úvodnom hovore',
       topics: [
-        'ako automatizovať telefonické objednávanie pacientov',
-        'ako znížiť administratívnu vyťaženosť ambulancie',
-        'ako informovať pacienta o poradí a stave čakania',
-        'aké sú možnosti nasadenia a GDPR compliance'
+        'Ako vieme integrovať systém do vašej ambulancie',
+        'Ako fungujú platené funkcie a ako ich vieme nastaviť pre potreby ambulancie',
+        'Ako informovať pacienta o poradí a stave čakania',
+        'Aké sú možnosti nasadenia a GDPR compliance'
       ]
     },
     appointment: {
@@ -209,7 +220,7 @@ export const content = {
     footer: '© 2026 MedVoiceAI. All rights reserved.',
     footerNav: 'Navigation',
     footerContact: 'Contact',
-    footerAddress: 'Bratislava, Slovakia',
+    footerAddress: 'Kosice, Slovakia',
     home: {
       title: 'MedVoiceAI',
       heroEyebrow: 'Voice AI for Healthcare',
@@ -318,22 +329,29 @@ export const content = {
           text: 'Captures requests, suggests appointment times, and helps reduce missed calls.'
         },
         {
-          title: 'Queue notifications',
-          text: 'Can notify patients when their turn is approaching or when they are nearly next.'
-        },
-        {
           title: 'Staff relief',
           text: 'Allows nurses and administrative staff to focus more on care and less on repetitive calls.'
         },
         {
           title: 'GDPR-oriented processes',
           text: 'Designed with personal data protection and safe healthcare operations in mind.'
-        },
-        {
-          title: 'Scalable for multiple clinics',
-          text: 'The solution can be adapted for smaller practices and larger healthcare operations.'
         }
       ],
+      paidFeatures: {
+        title: 'Paid Features',
+        teaser: 'Want to show clinics a more modern scheduling flow? Click to explore premium options.',
+        description: 'Choose extended packages that help clinics speed up communication and improve patient comfort.',
+        features: [
+          {
+            title: 'Patient Calling',
+            text: 'Automated patient calling based on configured rules and real-time clinic workflow.'
+          },
+          {
+            title: 'Paid Consultations',
+            text: 'Support for booking and managing paid consultations with a clear process for staff and patients.'
+          }
+        ]
+      },
       outroTitle: 'What clinics gain',
       outroText: 'Fewer missed calls, less manual administration, and a more professional patient experience from the very first interaction.'
     },
@@ -341,11 +359,11 @@ export const content = {
       title: 'Contact and Demo',
       intro: 'If you want to see how MedVoiceAI could work in a specific clinic, get in touch. We can prepare a short demo and an initial implementation overview.',
       addressLabel: 'Location',
-      address: 'Bratislava, Slovakia',
+      address: 'Kosice, Slovakia',
       phoneLabel: 'Phone',
-      phone: '+421 900 123 456',
+      phone: '+421 949 391 770',
       emailLabel: 'Email',
-      email: 'hello@medvoiceai.sk',
+      email: 'info@medvoice.sk',
       hoursLabel: 'Availability',
       hours: 'Mon - Fri: 9:00 AM - 5:00 PM',
       boxTitle: 'What we can cover on an intro call',

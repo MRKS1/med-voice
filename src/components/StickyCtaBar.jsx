@@ -17,7 +17,6 @@ export default function StickyCtaBar({ label, href, onNavigate }) {
   return (
     <div className={`sticky-cta-bar ${isVisible ? 'is-visible' : ''}`}>
       <div className="container sticky-cta-inner">
-        <span className="sticky-cta-text">MedVoiceAI</span>
         <AppLink href={href} className="btn sticky-cta-btn" onNavigate={onNavigate}>
           {label}
         </AppLink>

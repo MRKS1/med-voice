@@ -23,8 +23,8 @@ export default function Footer({ footer, footerTagline, footerNav, footerContact
           </div>
           <div className="footer-links">
             <p className="footer-heading">{footerContact}</p>
-            <a href="mailto:hello@medvoiceai.sk">hello@medvoiceai.sk</a>
-            <a href="tel:+421900123456">+421 900 123 456</a>
+            <a href="mailto:info@medvoice.sk">info@medvoice.sk</a>
+            <a href="tel:+421949391770">+421 949 391 770</a>
             <p>{footerAddress}</p>
           </div>
         </div>

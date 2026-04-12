@@ -20,7 +20,7 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
               <h2>{home.heroTitle}</h2>
               <p className="hero-lead">{home.heroText}</p>
               <div className="hero-actions">
-                <AppLink href={routes.contact} className="btn" onNavigate={onNavigate}>{home.heroButton}</AppLink>
+                <AppLink href={routes.appointment} className="btn" onNavigate={onNavigate}>{home.heroButton}</AppLink>
                 <AppLink href={`${routes.home}#features`} className="btn btn-secondary" onNavigate={onNavigate}>{home.heroSecondaryButton}</AppLink>
               </div>
               <div className="trust-badges">

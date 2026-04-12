@@ -84,7 +84,13 @@ export default function App() {
       case 'contact':
         return <ContactPage pageContent={currentPageContent} />;
       case 'appointment':
-        return <AppointmentPage pageContent={currentPageContent} locale={routeState.locale} />;
+        return (
+          <AppointmentPage
+            pageContent={currentPageContent}
+            locale={routeState.locale}
+            contactContent={localeContent.contact}
+          />
+        );
       default:
         return (
           <HomePage

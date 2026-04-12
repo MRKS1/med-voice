@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function AppointmentPage({ pageContent, locale }) {
+export default function AppointmentPage({ pageContent, locale, contactContent }) {
   const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
   const hasFormspreeEndpoint = Boolean(
     formspreeEndpoint &&
@@ -117,9 +117,9 @@ export default function AppointmentPage({ pageContent, locale }) {
           </form>
 
           <div className="feature-list-box">
-            <h3 className="section-subtitle">{pageContent.asideTitle}</h3>
+            <h3 className="section-subtitle">{contactContent?.boxTitle || pageContent.asideTitle}</h3>
             <ul className="feature-list">
-              {pageContent.asideItems.map((item) => (
+              {(contactContent?.topics || pageContent.asideItems).map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
