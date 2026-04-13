@@ -24,7 +24,7 @@ http://localhost:3000
 https://formspree.io/f/xxxxx
 ```
 
-3. Vytvor lokalny subor `.env` a vloz:
+3. Vytvor lokalny subor `.env` alebo skopiruj `.env.example` na `.env` a vloz:
 
 ```bash
 VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxx

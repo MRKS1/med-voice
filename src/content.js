@@ -180,7 +180,7 @@ export const content = {
       title: 'Požiadať o ukážku',
       success: 'Vaša žiadosť o ukážku bola úspešne odoslaná.',
       error: 'Odoslanie sa nepodarilo. Skúste to prosím znova o chvíľu.',
-      missingEndpoint: 'Formulár ešte nie je prepojený s emailom. Doplňte Formspree endpoint do nastavení projektu.',
+      missingEndpoint: 'Online formulár je momentálne nedostupný. Ozvite sa nám emailom alebo telefonicky a dohodneme ukážku.',
       setupHint: 'Doplňte do súboru .env premennú VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/vas-form-id a potom reštartujte dev server.',
       sending: 'Odosielam...',
       labels: {
@@ -378,7 +378,7 @@ export const content = {
       title: 'Request a Demo',
       success: 'Your demo request has been sent successfully.',
       error: 'The form could not be submitted. Please try again in a moment.',
-      missingEndpoint: 'The form is not connected to email yet. Add the Formspree endpoint to the project settings.',
+      missingEndpoint: 'The online form is temporarily unavailable. Contact us by email or phone and we will schedule a demo with you.',
       setupHint: 'Add VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id to the .env file, then restart the dev server.',
       sending: 'Sending...',
       labels: {

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
 export default function AppointmentPage({ pageContent, locale, contactContent }) {
-  const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+  const rawFormspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+  const formspreeEndpoint = rawFormspreeEndpoint?.trim().replace(/^['\"]|['\"]$/g, '');
+  const isDevelopment = import.meta.env.DEV;
   const hasFormspreeEndpoint = Boolean(
     formspreeEndpoint &&
     !formspreeEndpoint.includes('your-form-id') &&
@@ -91,7 +93,23 @@ export default function AppointmentPage({ pageContent, locale, contactContent })
         ) : null}
 
         {!hasFormspreeEndpoint ? (
-          <div className="error-message">{pageContent.setupHint}</div>
+          <>
+            <div className="error-message">
+              {isDevelopment ? pageContent.setupHint : pageContent.missingEndpoint}
+            </div>
+            {!isDevelopment ? (
+              <div className="content-box appointment-fallback">
+                <p>
+                  <strong>{contactContent.emailLabel}:</strong>{' '}
+                  <a href={`mailto:${contactContent.email}`}>{contactContent.email}</a>
+                </p>
+                <p>
+                  <strong>{contactContent.phoneLabel}:</strong>{' '}
+                  <a href={`tel:${contactContent.phone.replace(/\s+/g, '')}`}>{contactContent.phone}</a>
+                </p>
+              </div>
+            ) : null}
+          </>
         ) : null}
 
         <div className="split-section appointment-layout">

@@ -7,6 +7,7 @@ import AboutPage from './components/AboutPage.jsx';
 import ServicesPage from './components/ServicesPage.jsx';
 import ContactPage from './components/ContactPage.jsx';
 import AppointmentPage from './components/AppointmentPage.jsx';
+import StickyCtaBar from './components/StickyCtaBar.jsx';
 
 function getRouteState(pathname) {
   const normalized = pathname.replace(/\/+$/, '') || '/';
@@ -116,6 +117,13 @@ export default function App() {
       <main id="main-content">
         {renderPage()}
       </main>
+      {routeState.page !== 'appointment' ? (
+        <StickyCtaBar
+          label={localeContent.home.stickyCtaText}
+          href={routes.appointment}
+          onNavigate={navigate}
+        />
+      ) : null}
       <Footer
         footer={localeContent.footer}
         footerTagline={localeContent.footerTagline}

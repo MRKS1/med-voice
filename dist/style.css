@@ -887,18 +887,17 @@ nav a:hover {
 
 .sticky-cta-bar {
   position: fixed;
-  bottom: 0;
+  bottom: 16px;
   left: 0;
   right: 0;
   z-index: 9;
-  background: linear-gradient(180deg, rgba(232, 244, 251, 0.96), rgba(220, 236, 246, 0.98));
-  border-top: 1px solid var(--line-strong);
-  box-shadow: 0 -8px 32px rgba(36, 86, 112, 0.12);
-  backdrop-filter: blur(16px);
-  padding: 10px 0;
-  transform: translateY(100%);
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  background: transparent;
+  transform: translateY(calc(100% + 28px));
   opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition: transform 0.45s ease, opacity 0.35s ease;
   pointer-events: none;
 }
 
@@ -912,19 +911,54 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: min(100%, 560px);
+  padding: 12px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.72), transparent 34%),
+    linear-gradient(135deg, rgba(248, 253, 255, 0.96), rgba(224, 239, 248, 0.94));
+  border: 1px solid rgba(58, 126, 156, 0.18);
+  box-shadow:
+    0 24px 48px rgba(31, 89, 117, 0.18),
+    0 10px 20px rgba(31, 89, 117, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  animation: sticky-bar-float 5.8s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.sticky-cta-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 46%);
+  pointer-events: none;
 }
 
 .sticky-cta-btn {
-  padding: 12px 28px;
+  position: relative;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  box-shadow: 0 12px 30px rgba(34, 105, 137, 0.22);
+  text-align: center;
   white-space: nowrap;
+  box-shadow:
+    0 16px 36px rgba(34, 105, 137, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .sticky-cta-btn:hover {
-  box-shadow: 0 16px 36px rgba(34, 105, 137, 0.28);
+  box-shadow:
+    0 20px 40px rgba(34, 105, 137, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 footer {
@@ -1002,6 +1036,16 @@ footer {
 
 .content-box p {
   color: var(--text-soft);
+}
+
+.appointment-fallback {
+  max-width: 700px;
+  margin: 0 auto 28px;
+}
+
+.appointment-fallback a {
+  color: var(--heading);
+  font-weight: 600;
 }
 
 form {
@@ -1111,6 +1155,18 @@ form textarea:disabled {
 
   50% {
     transform: translateY(-4px) scale(1.006);
+  }
+}
+
+@keyframes sticky-bar-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
   }
 }
 
@@ -1523,12 +1579,18 @@ form textarea:disabled {
   }
 
   .sticky-cta-bar {
-    padding: 10px 0;
+    bottom: 12px;
+    padding: 0 12px;
+  }
+
+  .sticky-cta-inner {
+    padding: 10px;
   }
 
   .sticky-cta-btn {
     width: 100%;
     text-align: center;
+    padding-inline: 18px;
   }
 
   .testimonial-card {

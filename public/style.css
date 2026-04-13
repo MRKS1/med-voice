@@ -1038,6 +1038,16 @@ footer {
   color: var(--text-soft);
 }
 
+.appointment-fallback {
+  max-width: 700px;
+  margin: 0 auto 28px;
+}
+
+.appointment-fallback a {
+  color: var(--heading);
+  font-weight: 600;
+}
+
 form {
   background: linear-gradient(180deg, rgba(252, 255, 255, 0.94), rgba(236, 246, 251, 0.96));
   padding: 30px;

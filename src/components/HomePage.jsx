@@ -1,6 +1,5 @@
 import AppLink from './AppLink.jsx';
 import Card from './Card.jsx';
-import StickyCtaBar from './StickyCtaBar.jsx';
 import useScrollReveal from '../hooks/useScrollReveal.js';
 
 export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
@@ -116,12 +115,6 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
           </div>
         </div>
       </section>
-
-      <StickyCtaBar
-        label={home.stickyCtaText}
-        href={routes.appointment}
-        onNavigate={onNavigate}
-      />
     </>
   );
 }

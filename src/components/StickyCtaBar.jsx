@@ -6,12 +6,17 @@ export default function StickyCtaBar({ label, href, onNavigate }) {
 
   useEffect(() => {
     function handleScroll() {
-      setIsVisible(window.scrollY > 600);
+      const revealOffset = Math.min(420, Math.max(220, window.innerHeight * 0.45));
+      setIsVisible(window.scrollY > revealOffset);
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (
