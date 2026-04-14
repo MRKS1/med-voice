@@ -831,6 +831,186 @@ nav a:hover {
   box-shadow: 0 22px 48px rgba(110, 231, 255, 0.36);
 }
 
+/* ── Virtual Assistant Section ── */
+
+.virtual-assistant-box {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 60, 90, 0.85),
+    rgba(20, 50, 80, 0.85)
+  );
+  padding: 52px 42px;
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid rgba(110, 231, 255, 0.15);
+  box-shadow:
+    0 32px 72px rgba(10, 30, 48, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.virtual-assistant-box .page-title {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.virtual-assistant-description {
+  max-width: 680px;
+  margin: 0 auto 32px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.virtual-assistant-error {
+  max-width: 680px;
+  margin: 0 auto 24px;
+  padding: 14px 20px;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  border-radius: 12px;
+  color: rgba(255, 100, 100, 0.95);
+  font-size: 16px;
+}
+
+.virtual-assistant-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.virtual-assistant-btn-start {
+  background: linear-gradient(
+    135deg,
+    rgba(110, 231, 255, 0.9),
+    rgba(185, 242, 124, 0.8)
+  );
+  color: #052033;
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 36px rgba(110, 231, 255, 0.3);
+}
+
+.virtual-assistant-btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(110, 231, 255, 0.4);
+}
+
+.virtual-assistant-btn-start:active {
+  transform: translateY(0);
+}
+
+.virtual-assistant-btn-start:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.virtual-assistant-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.call-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 20px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 12px;
+}
+
+.call-indicator {
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse-green 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.call-status-text {
+  color: rgba(34, 197, 94, 0.95);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.call-timer {
+  font-size: 48px;
+  font-weight: 600;
+  color: #6ee7ff;
+  font-family: 'Monaco', 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(110, 231, 255, 0.4);
+}
+
+.virtual-assistant-btn-end {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.85),
+    rgba(220, 38, 38, 0.9)
+  );
+  color: #ffffff;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 36px rgba(239, 68, 68, 0.3);
+}
+
+.virtual-assistant-btn-end:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.95),
+    rgba(220, 38, 38, 1)
+  );
+}
+
+.virtual-assistant-btn-end:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments for Virtual Assistant */
+@media (max-width: 768px) {
+  .virtual-assistant-box {
+    padding: 40px 24px;
+  }
+
+  .call-timer {
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+
+  .virtual-assistant-btn-start,
+  .virtual-assistant-btn-end {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+}
+
 /* ── Testimonials ── */
 
 .testimonials-grid {
