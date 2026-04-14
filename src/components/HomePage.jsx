@@ -1,13 +1,125 @@
+import { useState, useEffect } from 'react';
+import { RetellWebClient } from 'retell-client-js-sdk';
 import AppLink from './AppLink.jsx';
 import Card from './Card.jsx';
 import useScrollReveal from '../hooks/useScrollReveal.js';
+
+const CALL_DURATION_SECONDS = 60;
 
 export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
   const benefitsRef = useScrollReveal();
   const stepsRef = useScrollReveal();
   const complianceRef = useScrollReveal();
   const testimonialsRef = useScrollReveal();
+  const virtualAssistantRef = useScrollReveal();
   const ctaRef = useScrollReveal();
+
+  const [isCallActive, setIsCallActive] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(CALL_DURATION_SECONDS);
+  const [callObject, setCallObject] = useState(null);
+  const [error, setError] = useState('');
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (callObject) {
+        try {
+          callObject.stopCall();
+        } catch (e) {
+          console.error('Error stopping call on unmount:', e);
+        }
+      }
+    };
+  }, [callObject]);
+
+  // Handle countdown timer and auto-end
+  useEffect(() => {
+    if (!isCallActive) return;
+
+    if (timeLeft <= 0) {
+      handleEndCall();
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isCallActive, timeLeft]);
+
+  const handleStartCall = async () => {
+    try {
+      setError('');
+      setTimeLeft(CALL_DURATION_SECONDS);
+
+      // Call your backend endpoint to create a web call
+      const apiBaseUrl = import.meta.env.VITE_RETELL_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/create-call`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create call');
+      }
+
+      const data = await response.json();
+
+      if (!data.access_token || !data.call_id) {
+        throw new Error('Invalid response from backend');
+      }
+
+      // Initialize Retell Web Client
+      const retellClient = new RetellWebClient();
+      
+      retellClient.on('call_started', () => {
+        setIsCallActive(true);
+      });
+
+      retellClient.on('call_ended', () => {
+        handleEndCall();
+      });
+
+      retellClient.on('error', (error) => {
+        console.error('Retell error:', error);
+        setError(home.virtualAssistantError);
+        setIsCallActive(false);
+      });
+
+      // Start the call
+      await retellClient.startCall({
+        accessToken: data.access_token,
+        callId: data.call_id,
+      });
+
+      setCallObject(retellClient);
+    } catch (err) {
+      console.error('Error starting call:', err);
+      setError(home.virtualAssistantError);
+      setIsCallActive(false);
+    }
+  };
+
+  const handleEndCall = () => {
+    try {
+      if (callObject) {
+        callObject.stopCall();
+      }
+    } catch (err) {
+      console.error('Error stopping call:', err);
+    } finally {
+      setIsCallActive(false);
+      setTimeLeft(CALL_DURATION_SECONDS);
+      setCallObject(null);
+    }
+  };
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
 
   return (
     <>
@@ -102,6 +214,48 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt section-lazy" ref={virtualAssistantRef}>
+        <div className="container">
+          <div className="virtual-assistant-box">
+            <h2 className="page-title">{home.virtualAssistantTitle}</h2>
+            <p className="virtual-assistant-description">{home.virtualAssistantDescription}</p>
+            
+            {error && (
+              <div className="virtual-assistant-error">
+                {error}
+              </div>
+            )}
+
+            <div className="virtual-assistant-controls">
+              {!isCallActive ? (
+                <button
+                  onClick={handleStartCall}
+                  className="btn virtual-assistant-btn-start"
+                >
+                  {home.virtualAssistantButtonStart}
+                </button>
+              ) : (
+                <div className="virtual-assistant-active">
+                  <div className="call-status">
+                    <span className="call-indicator"></span>
+                    <span className="call-status-text">{home.virtualAssistantActive}</span>
+                  </div>
+                  <div className="call-timer">
+                    {formatTime(timeLeft)}
+                  </div>
+                  <button
+                    onClick={handleEndCall}
+                    className="btn btn-danger virtual-assistant-btn-end"
+                  >
+                    {home.virtualAssistantButtonEnd}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>

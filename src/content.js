@@ -94,6 +94,12 @@ export const content = {
           role: 'Ambulancia v Žiline'
         }
       ],
+      virtualAssistantTitle: 'Vyskúšajte virtuálneho asistenta',
+      virtualAssistantDescription: 'Otestujte si priamo AI asistenta MedVoiceAI. Kliknite na tlačidlo nižšie a prejdite si reálnu konverzáciu s hlasovým asistentom. Hovor je obmedzený na 1 minútu.',
+      virtualAssistantButtonStart: 'Spustiť test asistenta',
+      virtualAssistantButtonEnd: 'Ukončiť hovor',
+      virtualAssistantActive: 'Hovor je aktívny',
+      virtualAssistantError: 'Chyba pri spúšťaní hovoru. Skúste to prosím znovú.',
       ctaTitle: 'Chceš ukázať ambulanciám modernejší spôsob objednávania?',
       ctaText: 'MedVoiceAI prináša rýchlejšiu komunikáciu s pacientmi, menej prerušení pre personál a profesionálnejší chod ambulancie.',
       stickyCtaText: 'Dohodnúť ukážku'
@@ -296,6 +302,12 @@ export const content = {
           role: 'Clinic in Žilina'
         }
       ],
+      virtualAssistantTitle: 'Test the Virtual Assistant',
+      virtualAssistantDescription: 'Experience MedVoiceAI firsthand. Click the button below and have a real conversation with our voice assistant. The call is limited to 1 minute.',
+      virtualAssistantButtonStart: 'Start Assistant Test',
+      virtualAssistantButtonEnd: 'End Call',
+      virtualAssistantActive: 'Call Active',
+      virtualAssistantError: 'Error starting call. Please try again.',
       ctaTitle: 'Ready to present a smarter front desk for clinics?',
       ctaText: 'MedVoiceAI brings faster patient communication, fewer interruptions for staff, and a more modern clinic workflow.',
       stickyCtaText: 'Book a Demo'
