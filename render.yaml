@@ -1,11 +1,16 @@
 services:
   - type: web
     name: medvoiceai
-    env: node
-    plan: free
+    env: static
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    staticPublishPath: dist
     autoDeploy: true
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: VITE_FORMSPREE_ENDPOINT
+        sync: false
+      - key: VITE_RETELL_API_BASE_URL
         sync: false

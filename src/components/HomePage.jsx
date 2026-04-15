@@ -55,6 +55,9 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
 
       // Call your backend endpoint to create a web call
       const apiBaseUrl = import.meta.env.VITE_RETELL_API_BASE_URL;
+      if (!apiBaseUrl) {
+        throw new Error('VITE_RETELL_API_BASE_URL is not configured');
+      }
       const response = await fetch(`${apiBaseUrl}/create-call`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -72,7 +75,7 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
 
       // Initialize Retell Web Client
       const retellClient = new RetellWebClient();
-      
+
       retellClient.on('call_started', () => {
         setIsCallActive(true);
       });
@@ -223,7 +226,7 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
           <div className="virtual-assistant-box">
             <h2 className="page-title">{home.virtualAssistantTitle}</h2>
             <p className="virtual-assistant-description">{home.virtualAssistantDescription}</p>
-            
+
             {error && (
               <div className="virtual-assistant-error">
                 {error}
