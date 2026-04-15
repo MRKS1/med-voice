@@ -11,7 +11,6 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
   const stepsRef = useScrollReveal();
   const complianceRef = useScrollReveal();
   const testimonialsRef = useScrollReveal();
-  const virtualAssistantRef = useScrollReveal();
   const ctaRef = useScrollReveal();
 
   const [isCallActive, setIsCallActive] = useState(false);
@@ -147,15 +146,42 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
               </div>
             </div>
             <div className="hero-panel">
-              <div className="panel-card">
-                <p className="panel-label">AI</p>
-                <h3>{siteName}</h3>
-                <p className="panel-text">{home.spotlightText}</p>
-                <ul className="panel-list">
-                  {home.spotlightPoints.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+              <div className="virtual-assistant-box hero-call-card">
+                <h2 className="page-title">{home.virtualAssistantTitle}</h2>
+                <p className="virtual-assistant-description">{home.virtualAssistantDescription}</p>
+
+                {error && (
+                  <div className="virtual-assistant-error">
+                    {error}
+                  </div>
+                )}
+
+                <div className="virtual-assistant-controls">
+                  {!isCallActive ? (
+                    <button
+                      onClick={handleStartCall}
+                      className="btn virtual-assistant-btn-start"
+                    >
+                      {home.virtualAssistantButtonStart}
+                    </button>
+                  ) : (
+                    <div className="virtual-assistant-active">
+                      <div className="call-status">
+                        <span className="call-indicator"></span>
+                        <span className="call-status-text">{home.virtualAssistantActive}</span>
+                      </div>
+                      <div className="call-timer">
+                        {formatTime(timeLeft)}
+                      </div>
+                      <button
+                        onClick={handleEndCall}
+                        className="btn btn-danger virtual-assistant-btn-end"
+                      >
+                        {home.virtualAssistantButtonEnd}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -217,48 +243,6 @@ export default function HomePage({ home, nav, routes, siteName, onNavigate }) {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-alt section-lazy" ref={virtualAssistantRef}>
-        <div className="container">
-          <div className="virtual-assistant-box">
-            <h2 className="page-title">{home.virtualAssistantTitle}</h2>
-            <p className="virtual-assistant-description">{home.virtualAssistantDescription}</p>
-
-            {error && (
-              <div className="virtual-assistant-error">
-                {error}
-              </div>
-            )}
-
-            <div className="virtual-assistant-controls">
-              {!isCallActive ? (
-                <button
-                  onClick={handleStartCall}
-                  className="btn virtual-assistant-btn-start"
-                >
-                  {home.virtualAssistantButtonStart}
-                </button>
-              ) : (
-                <div className="virtual-assistant-active">
-                  <div className="call-status">
-                    <span className="call-indicator"></span>
-                    <span className="call-status-text">{home.virtualAssistantActive}</span>
-                  </div>
-                  <div className="call-timer">
-                    {formatTime(timeLeft)}
-                  </div>
-                  <button
-                    onClick={handleEndCall}
-                    className="btn btn-danger virtual-assistant-btn-end"
-                  >
-                    {home.virtualAssistantButtonEnd}
-                  </button>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </section>
